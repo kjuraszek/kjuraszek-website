@@ -1,7 +1,7 @@
 <template>
     <div class="column is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
         <article class="card">
-          <div class="card-image">
+          <div class="card-image has-background-black">
               <b-image :src="item.image" ratio="is-4by3" :alt="item.title"></b-image>
           </div>
           <div class="card-content">
@@ -42,5 +42,8 @@ export default {
 <style scoped>
 article, .card {
   height:100%;
+}
+.card-image .image{
+  opacity:0.8;
 }
 </style>
