@@ -33,9 +33,9 @@ export default {
   },
   data(){
     return{
-      bannerImage: require('@/assets/banner.jpg'),
-      defaultImage: require('@/assets/default.jpg'),
-      avatarImage: require('@/assets/chris.jpg'),
+      bannerImage: process.env.BASE_URL + 'img/banner.jpg',
+      defaultImage: process.env.BASE_URL + 'img/default.jpg',
+      avatarImage: process.env.BASE_URL + 'img/chris.jpg',
       loading: true,
       projects: {}
     }
@@ -50,7 +50,7 @@ export default {
           .then((response) => {
             this.loading = false;
             this.projects = response.data.projects.map( (project) => {
-              project.image = project.image ? require('@/assets/' + project.image) : this.defaultImage;
+              project.image = project.image ? `${process.env.BASE_URL}img/${project.image}` : this.defaultImage;
               return project;
           })
           })
