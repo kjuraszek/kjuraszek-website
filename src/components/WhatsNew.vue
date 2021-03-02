@@ -58,7 +58,10 @@ export default {
       return this.$parent.loading
     },
     items: function(){
-      return this.$parent.projects.length > 0 ? [...this.$parent.projects].sort((a,b) => b.id - a.id) : []
+      // sorting items from newest (highest id) and limiting to max 5 items
+      return this.$parent.projects.length > 0 ? 
+      [...this.$parent.projects].sort((a,b) => b.id - a.id).slice( 0, 
+      (this.$parent.projects.length > 5 ? 5 : this.$parent.projects.length) ) : []
     }
   },
 
