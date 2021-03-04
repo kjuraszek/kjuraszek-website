@@ -14,6 +14,16 @@
             {{tag}}
           </b-button>
         </div>
+
+        <div class="has-text-left">
+          <b-switch 
+          v-model="extendedProjectsView" 
+          type="is-danger" 
+          size="is-medium">
+            Extended projects info
+          </b-switch>
+        </div>
+
         <p class="is-6" v-if="!loading">
           <em>showing {{ items.length.toString() + (items.length === 1 ? " project" : " projects")}} from newest</em>
         </p>
@@ -28,6 +38,7 @@
           v-for="(item, index) in items" 
           v-bind:item="item"
           v-bind:index="index"
+          v-bind:extended="extendedProjectInfo"
           :key="item.id" />
           </transition-group>
         </div>
@@ -45,17 +56,21 @@ export default {
   name: 'Portfolio',
   data(){
     return{
-      selectedTag: 'all'
+      selectedTag: 'all',
+      extendedProjectsView: true
     }
   },
   methods:{
     changeTag: function(event, t){
       this.selectedTag = t
-    }
+    },
   },
   computed:{
     filteredTag: function(){
       return this.selectedTag;
+    },
+    extendedProjectInfo: function(){
+      return this.extendedProjectsView;
     },
     loading: function(){
       return this.$parent.loading;
