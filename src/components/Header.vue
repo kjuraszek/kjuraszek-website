@@ -43,14 +43,14 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.site-name{
-      font-family: 'Amarante', cursive;
-}
-.site-name .site-name-dot{
-  color:darkcyan;
-  font-size: 2em;
-  font-weight:700;
-  margin-top: -9px;
-}
+<style scoped lang="sass">
+.site-name
+    font-family: 'Amarante', cursive
+
+    .site-name-dot
+        color: darkcyan
+        font-size: 2em
+        font-weight: 700
+        margin-top: -9px
+
 </style>

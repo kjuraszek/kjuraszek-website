@@ -35,12 +35,16 @@ export default {
 }
 </script>
 
-<style scoped>
-#aboutme .box{
-  border-radius:100%;
-  max-width:200px;
-  margin:auto;
-  -webkit-box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),0 0px 10px 3px rgba(10, 10, 10, 0.65);
-  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),0 0px 10px 3px rgba(10, 10, 10, 0.65);
-}      
+<style scoped lang="sass">
+=box-shadow($property...)
+  -webkit-box-shadow: $property
+  -ms-box-shadow: $property
+  box-shadow: $property
+
+#aboutme .box
+  border-radius: 100%
+  max-width: 200px
+  margin: auto
+  +box-shadow(0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),0 0px 10px 3px rgba(10, 10, 10, 0.65))
+      
 </style>

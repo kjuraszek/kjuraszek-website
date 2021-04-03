@@ -60,11 +60,11 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-article, .card {
-  height:100%;
-}
-.card-image .image{
-  opacity:0.8;
-}
+<style scoped lang="sass">
+article, .card
+  height: 100%
+
+.card-image .image
+  opacity: 0.8
+
 </style>

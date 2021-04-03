@@ -25,17 +25,17 @@ export default {
 }
 </script>
 
-<style scoped>
-.hero.has-background{
-  position: relative;
-  overflow: hidden;
-}
-.hero-background{
-  position: absolute;
-  object-fit: cover;
-  object-position: top center;
-  width: 100%;
-  height: 100%;
-  opacity: 0.4;
-} 
+<style scoped lang="sass">
+.hero.has-background
+  position: relative
+  overflow: hidden
+
+.hero-background
+  position: absolute
+  object-fit: cover
+  object-position: top center
+  width: 100%
+  height: 100%
+  opacity: 0.4
+
 </style>
