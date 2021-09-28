@@ -4,25 +4,38 @@
       <h2 class="title is-2">Chapter 3: Projects</h2>
       <p class="subtitle"><em>dragons, epic battles, powerful spells ? forget it, this is far more thrilling!</em></p>
       <template v-if="!loading">
-        <div class="buttons">
-          <b-button 
-          v-for="(tag, index) in tags"
-          @click="changeTag($event, tag)"
-          :key="index" 
-          :type="tag===filteredTag ? 'is-danger':'is-danger is-light'"
-          >
-            {{tag}}
-          </b-button>
-        </div>
-
-        <div class="has-text-left">
+        <div class="has-text-left pb-3">
           <b-switch 
-          v-model="extendedProjectsView" 
-          type="is-danger" 
-          size="is-medium">
-            Extended projects info
+            v-model="visibleControls"
+            aria-controls="portfolioControls" 
+            type="is-danger" 
+            size="is-medium">
+              Visible controls
           </b-switch>
         </div>
+        <b-collapse
+            aria-id="portfolioControls"
+            animation="slide"
+            v-model="visibleControls">
+          <div class="has-text-left pb-3">
+            <b-switch
+            v-model="extendedProjectsView"
+            type="is-danger" 
+            size="is-medium">
+              Extended projects info
+            </b-switch>
+          </div>
+          <div class="buttons pb-3">
+            <b-button 
+            v-for="(tag, index) in tags"
+            @click="changeTag($event, tag)"
+            :key="index" 
+            :type="tag===filteredTag ? 'is-danger':'is-danger is-light'"
+            >
+              {{tag}}
+            </b-button>
+          </div>
+        </b-collapse>
 
         <p class="is-6" v-if="!loading">
           <em>showing {{ items.length.toString() + (items.length === 1 ? " project" : " projects")}} from newest</em>
@@ -57,6 +70,7 @@ export default {
   data(){
     return{
       selectedTag: 'all',
+      visibleControls: true,
       extendedProjectsView: true
     }
   },
