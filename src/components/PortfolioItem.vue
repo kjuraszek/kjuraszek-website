@@ -1,7 +1,9 @@
 <template>
     <div class="column is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
         <article class="card">
-          <template v-if="extended">
+          <b-collapse
+            animation="fade"
+            :open="extended">
             <div class="card-image has-background-black">
                 <b-image :src="item.image" ratio="is-4by3" :alt="item.title"></b-image>
             </div>
@@ -28,8 +30,10 @@
                 </div>
               </div>
             </div>
-          </template>
-          <template v-else>
+          </b-collapse>
+          <b-collapse
+              animation="fade"
+              :open="!extended">
               <div class="card-content">
                 <h3 class="title is-3">{{item.title}}</h3>
                 <hr>
@@ -47,7 +51,7 @@
                   </div>
                 </div>
             </div>
-          </template>
+          </b-collapse>
         </article> 
       </div>
 </template>
