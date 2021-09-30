@@ -4,7 +4,7 @@
       <h2 class="title is-2">Chapter 3: Projects</h2>
       <p class="subtitle"><em>dragons, epic battles, powerful spells ? forget it, this is far more thrilling!</em></p>
       <template v-if="!loading">
-        <div class="has-text-left pb-3">
+        <div class="has-text-left mt-4">
           <b-switch 
             v-model="visibleControls"
             aria-controls="portfolioControls" 
@@ -17,42 +17,74 @@
             aria-id="portfolioControls"
             animation="slide"
             v-model="visibleControls">
-          <div class="has-text-left pb-3">
-            <b-switch
-            v-model="extendedProjectsView"
-            type="is-danger" 
-            size="is-medium">
-              Extended projects info
-            </b-switch>
-          </div>
-          <div class="buttons pb-3">
-            <b-button 
-            v-for="(tag, index) in tags"
-            @click="changeTag($event, tag)"
-            :key="index" 
-            :type="tag===filteredTag ? 'is-danger':'is-danger is-light'"
-            >
-              {{tag}}
-            </b-button>
+            <div class="columns">
+
+              <div class="column is-one-quarters-desktop is-two-fifths-tablet has-text-left my-4">
+                <b-switch
+                v-model="extendedProjectsView"
+                type="is-danger" 
+                size="is-medium">
+                  Extended info
+                </b-switch>
+                <b-field 
+                  class="my-4"
+                  type="is-danger" 
+                  label="Sort by"
+                  label-position="on-border">
+                  <b-select
+                    v-model="sortPortfolioItemsBy"
+                    size="is-medium">
+                    <option 
+                      v-for="option in sortingOptions"
+                      :value="option.name"
+                      :key="option.name">
+                      {{option.label}}
+                    </option>
+                  </b-select>
+                  <p class="control">  
+                    <b-button 
+                    type="is-danger"
+                    size="is-medium"
+                    class="button"
+                    icon-pack="fas"
+                    :icon-right="sortPortfolioItemsOrder==='asc' ? 'sort-numeric-down' : 'sort-numeric-up'" 
+                    @click="switchSortingOrder()"/>
+                </p>
+                </b-field>
+              </div>
+
+              <div class="column buttons my-4">
+                <b-button 
+                v-for="(tag, index) in tags"
+                @click="changeTag($event, tag)"
+                :key="index" 
+                :type="tag===filteredTag ? 'is-danger':'is-danger is-light'"
+                >
+                  {{tag}}
+                </b-button>
+              </div>
+
           </div>
         </b-collapse>
 
-        <p class="is-6" v-if="!loading">
-          <em>showing {{ items.length.toString() + (items.length === 1 ? " project" : " projects")}} from newest</em>
+        <p class="is-6 my-4" v-if="!loading">
+          <em>showing {{ items.length.toString() + (items.length === 1 ? " project" : " projects")}} 
+            in {{ sortPortfolioItemsOrder==="asc" ? "ascending" : "descending" }} 
+            order sorted by {{ sortPortfolioItemsBy }}</em>
         </p>
         
         <div >
           <transition-group
-          tag="div" 
-          name="fade" 
-          mode="out-in"
-          class="columns is-desktop is-multiline">
-            <PortfolioItem 
-          v-for="(item, index) in items" 
-          v-bind:item="item"
-          v-bind:index="index"
-          v-bind:extended="extendedProjectInfo"
-          :key="item.id" />
+            tag="div" 
+            name="fade" 
+            mode="out-in"
+            class="columns is-desktop is-multiline">
+              <PortfolioItem 
+            v-for="(item, index) in items" 
+            v-bind:item="item"
+            v-bind:index="index"
+            v-bind:extended="extendedProjectInfo"
+            :key="item.id" />
           </transition-group>
         </div>
         
@@ -70,13 +102,24 @@ export default {
   data(){
     return{
       selectedTag: 'all',
+      sortPortfolioItemsBy: 'id',
+      sortPortfolioItemsOrder: 'desc',
       visibleControls: true,
-      extendedProjectsView: true
+      extendedProjectsView: true,
+      sortingOptions:[
+        {"name": "id", "label": "id"},
+        {"name": "progress", "label": "progress"},
+        {"name": "tags", "label": "tags quantity"},
+        {"name": "title", "label": "title"}
+      ]
     }
   },
   methods:{
     changeTag: function(event, t){
       this.selectedTag = t
+    },
+    switchSortingOrder: function(){
+      this.sortPortfolioItemsOrder = this.sortPortfolioItemsOrder==='asc' ? 'desc' : 'asc'
     },
   },
   computed:{
@@ -93,11 +136,37 @@ export default {
       if(this.$parent.projects.length === 0){
         return [];
       } else {
-        if( this.selectedTag === "all"){
-          return  [...this.$parent.projects].sort((a,b) => b.id - a.id);
+        let portfolioItems = []
+        if(this.sortPortfolioItemsBy === "id"){ 
+          portfolioItems = [...this.$parent.projects].sort(
+            (a,b) => (this.sortPortfolioItemsOrder === 'desc' ?
+            b.id - a.id : 
+            a.id - b.id));
+        } else if(this.sortPortfolioItemsBy === "progress"){
+          portfolioItems = [...this.$parent.projects].sort(
+            (a,b) => (this.sortPortfolioItemsOrder === "desc" ?
+            b.progress - a.progress : 
+            a.progress - b.progress));
+        } else if(this.sortPortfolioItemsBy === "tags"){
+          portfolioItems = [...this.$parent.projects].sort(
+            (a,b) => (this.sortPortfolioItemsOrder === "desc" ?
+            b.tags.length - a.tags.length : 
+            a.tags.length - b.tags.length));
+        } else if(this.sortPortfolioItemsBy === "title"){
+          portfolioItems = [...this.$parent.projects].sort(
+            (a,b) => (this.sortPortfolioItemsOrder === "desc" ?
+            b.title.toLowerCase() > a.title.toLowerCase() : 
+            a.title.toLowerCase() > b.title.toLowerCase()));
         } else {
-          return  [...this.$parent.projects].sort((a,b) => b.id - a.id)
-          .filter( project => project.tags.includes(this.selectedTag));
+          portfolioItems = [...this.$parent.projects].sort(
+            (a,b) => (this.sortPortfolioItemsOrder === "desc" ?
+            b.id - a.id : 
+            a.id - b.id));
+        }
+        if(this.selectedTag === "all"){
+          return  portfolioItems;
+        } else {
+          return  portfolioItems.filter( project => project.tags.includes(this.selectedTag));
         }
       }
     },
