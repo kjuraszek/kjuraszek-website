@@ -137,31 +137,25 @@ export default {
         return [];
       } else {
         let portfolioItems = []
+        // sorting in desc order by default
         if(this.sortPortfolioItemsBy === "id"){ 
           portfolioItems = [...this.$parent.projects].sort(
-            (a,b) => (this.sortPortfolioItemsOrder === 'desc' ?
-            b.id - a.id : 
-            a.id - b.id));
+            (a,b) => (b.id - a.id));
         } else if(this.sortPortfolioItemsBy === "progress"){
           portfolioItems = [...this.$parent.projects].sort(
-            (a,b) => (this.sortPortfolioItemsOrder === "desc" ?
-            b.progress - a.progress : 
-            a.progress - b.progress));
+            (a,b) => (b.progress - a.progress));
         } else if(this.sortPortfolioItemsBy === "tags"){
           portfolioItems = [...this.$parent.projects].sort(
-            (a,b) => (this.sortPortfolioItemsOrder === "desc" ?
-            b.tags.length - a.tags.length : 
-            a.tags.length - b.tags.length));
+            (a,b) => (b.tags.length - a.tags.length));
         } else if(this.sortPortfolioItemsBy === "title"){
           portfolioItems = [...this.$parent.projects].sort(
-            (a,b) => (this.sortPortfolioItemsOrder === "desc" ?
-            b.title.toLowerCase() > a.title.toLowerCase() : 
-            a.title.toLowerCase() > b.title.toLowerCase()));
+            (a,b) => (b.title.toLowerCase() > a.title.toLowerCase()));
         } else {
           portfolioItems = [...this.$parent.projects].sort(
-            (a,b) => (this.sortPortfolioItemsOrder === "desc" ?
-            b.id - a.id : 
-            a.id - b.id));
+            (a,b) => (b.id - a.id));
+        }
+        if(this.sortPortfolioItemsOrder === 'asc'){
+          portfolioItems.reverse();
         }
         if(this.selectedTag === "all"){
           return  portfolioItems;
