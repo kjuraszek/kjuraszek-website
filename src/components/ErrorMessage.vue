@@ -2,8 +2,7 @@
   <div class="columns is-centered">
     <div class="column is-half-desktop is-one-third-widescreen">
         <b-message 
-            title="Error loading data" 
-            type="is-dark"
+            title="Error loading data"
             size="is-medium" 
             has-icon icon="exclamation-triangle"
             :closable="false">
