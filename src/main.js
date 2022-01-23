@@ -9,7 +9,7 @@ import 'buefy/dist/buefy.css'
 import VueSmoothScroll from 'vue2-smooth-scroll'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faArrowLeft, faArrowRight, faPlayCircle, faEnvelope, faSortNumericDown, faSortNumericUp } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faArrowRight, faPlayCircle, faEnvelope, faSortNumericDown, faSortNumericUp, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faLastfmSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -20,7 +20,7 @@ Vue.use(Buefy, {
 });
 Vue.use(VueSmoothScroll)
 
-library.add({faArrowLeft, faArrowRight, faPlayCircle, faEnvelope, faGithub, faLastfmSquare, faLinkedin, faSortNumericDown, faSortNumericUp})
+library.add({faArrowLeft, faArrowRight, faPlayCircle, faEnvelope, faGithub, faLastfmSquare, faLinkedin, faSortNumericDown, faSortNumericUp, faExclamationTriangle})
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

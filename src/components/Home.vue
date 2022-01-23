@@ -37,6 +37,7 @@ export default {
       defaultImage: process.env.BASE_URL + 'img/default.jpg',
       avatarImage: process.env.BASE_URL + 'img/chris.jpg',
       loading: true,
+      failed: false,
       projects: {}
     }
   },
@@ -56,6 +57,8 @@ export default {
           })
           .catch(error => {
             console.log(error);
+            this.loading = false;
+            this.failed = true;
           })
       }
   }
