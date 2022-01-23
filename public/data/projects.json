@@ -1,8 +1,6 @@
-{
-	"projects":[
-		{"id":0, "title":"Advanced Tic Tac Toe game", "image":"advanced-tic-tac-toe.jpg", "desc":"Advanced Tic Tac Toe game. My first React project.", "tags":["js","react","html"], "github":"https://github.com/kjuraszek/advanced-tic-tac-toe", "demo":false, "progress":70},
-		{"id":1, "title":"Morse transmitter", "image":"morse-transmitter.jpg", "desc":"Application to simulate and practice Morse transmission.", "tags":["js","react", "mdbootstrap", "material design", "css", "html"], "github":"https://github.com/kjuraszek/morse-transmitter/", "demo":false, "progress":85},
-		{"id":2, "title":"ShoppingHub", "image":"shopping-hub.jpg", "desc":"This application helps you to organize your shopping lists.", "tags":["js","react", "material-ui", "material design", "css", "html"], "github":"https://github.com/kjuraszek/shopping-hub", "demo":false, "progress":70},
-		{"id":3, "title":"kjuraszek website", "image":"kjuraszek-website.jpg", "desc":"Refreshing my website.", "tags":["js","vue","buefy","bulma", "css", "html"], "github":"https://github.com/kjuraszek/kjuraszek-website/", "demo":false, "progress":90}
-	]
-}
+[
+	{"id":0, "title":"Advanced Tic Tac Toe game", "image":"advanced-tic-tac-toe.jpg", "desc":"Advanced Tic Tac Toe game. My first React project.", "tags":["js","react","html"], "github":"https://github.com/kjuraszek/advanced-tic-tac-toe", "demo":false, "progress":70},
+	{"id":1, "title":"Morse transmitter", "image":"morse-transmitter.jpg", "desc":"Application to simulate and practice Morse transmission.", "tags":["js","react", "mdbootstrap", "material design", "css", "html"], "github":"https://github.com/kjuraszek/morse-transmitter/", "demo":false, "progress":85},
+	{"id":2, "title":"ShoppingHub", "image":"shopping-hub.jpg", "desc":"This application helps you to organize your shopping lists.", "tags":["js","react", "material-ui", "material design", "css", "html"], "github":"https://github.com/kjuraszek/shopping-hub", "demo":false, "progress":70},
+	{"id":3, "title":"kjuraszek website", "image":"kjuraszek-website.jpg", "desc":"Refreshing my website.", "tags":["js","vue","buefy","bulma", "css", "html"], "github":"https://github.com/kjuraszek/kjuraszek-website/", "demo":false, "progress":90}
+]

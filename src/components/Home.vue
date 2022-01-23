@@ -49,7 +49,7 @@ export default {
           axios.get(process.env.BASE_URL+"data/projects.json")
           .then((response) => {
             this.loading = false;
-            this.projects = response.data.projects.map( (project) => {
+            this.projects = response.data.map( (project) => {
               project.image = project.image ? `${process.env.BASE_URL}img/${project.image}` : this.defaultImage;
               return project;
           })
