@@ -3,7 +3,7 @@
     <div class="container">
       <h2 class="title is-2">Chapter 3: Projects</h2>
       <p class="subtitle"><em>dragons, epic battles, powerful spells ? forget it, this is far more thrilling!</em></p>
-      <template v-if="!loading">
+      <template v-if="!loading && !failed">
         <div class="has-text-left mt-4">
           <b-switch 
             v-model="visibleControls"
@@ -87,15 +87,20 @@
             :key="item.id" />
           </transition-group>
         </div>
-        
       </template>
-      <b-skeleton size="is-large" :count="7" :active="loading"></b-skeleton>
+      <template v-else-if="loading && !failed">
+        <b-skeleton size="is-large" :count="7"></b-skeleton>
+      </template>
+      <template v-else-if="failed">
+        <ErrorMessage />
+      </template>
     </div>
   </section>
 </template>
 
 <script>
 import PortfolioItem from './PortfolioItem.vue'
+import ErrorMessage from './ErrorMessage.vue'
 
 export default {
   name: 'Portfolio',
@@ -131,6 +136,9 @@ export default {
     },
     loading: function(){
       return this.$parent.loading;
+    },
+    failed: function(){
+      return this.$parent.failed
     },
     items: function(){
       if(this.$parent.projects.length === 0){
@@ -173,7 +181,8 @@ export default {
     }
   },
   components:{
-    PortfolioItem
+    PortfolioItem,
+    ErrorMessage
   },
 }
 </script>
