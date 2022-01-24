@@ -3,7 +3,7 @@
     <div class="container">
       <h2 class="title has-text-white  is-2">Chapter 2: What's New?</h2>
       <p class="subtitle has-text-white"><em>latest adventures of our figure</em></p>
-      <template v-if="!loading">
+      <template v-if="!loading && !failed">
       <b-carousel-list
         v-model="values"
         :data="items"
@@ -21,12 +21,19 @@
         :icon-next="iconNext"
         />
         </template>
-        <b-skeleton size="is-large" :count="7" :active="loading"></b-skeleton>
+        <template v-else-if="loading && !failed">
+          <b-skeleton size="is-large" :count="7"></b-skeleton>
+        </template>
+        <template v-else-if="failed">
+          <ErrorMessage />
+        </template>
     </div>
   </section>
 </template>
 
 <script>
+import ErrorMessage from './ErrorMessage.vue'
+
 export default {
   name: 'WhatsNew',
   data(){
@@ -57,6 +64,9 @@ export default {
     loading: function(){
       return this.$parent.loading
     },
+    failed: function(){
+      return this.$parent.failed
+    },
     items: function(){
       // sorting items from newest (highest id) and limiting to max 5 items
       return this.$parent.projects.length > 0 ? 
@@ -81,6 +91,10 @@ export default {
         this.perList = 4;
       }
     }
-  }
+  },
+
+  components:{
+    ErrorMessage
+  },
 }
 </script>
