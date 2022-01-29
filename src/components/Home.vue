@@ -54,7 +54,7 @@ export default {
               project.image = project.image ? `${process.env.BASE_URL}img/${project.image}` : this.defaultImage;
               axios.get(project.image)
               .then((response) => {
-                if(response.headers['content-type'].toLowerCase().startsWith('image')){
+                if(!response.headers['content-type'].toLowerCase().startsWith('image')){
                   throw new Error("Invalid response - content is not an image.");
                 }
               }).catch(() => {
