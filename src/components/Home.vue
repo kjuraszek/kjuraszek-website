@@ -52,8 +52,16 @@ export default {
             this.loading = false;
             this.projects = response.data.map( (project) => {
               project.image = project.image ? `${process.env.BASE_URL}img/${project.image}` : this.defaultImage;
+              axios.head(project.image)
+              .then((response) => {
+                if(!response.headers['content-type'].toLowerCase().startsWith('image')){
+                  throw new Error("Invalid response - content is not an image.");
+                }
+              }).catch(() => {
+                project.image = this.defaultImage;
+              });
               return project;
-          })
+            })
           })
           .catch(error => {
             console.log(error);
