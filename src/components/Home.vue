@@ -61,7 +61,7 @@ export default {
                 project.image = this.defaultImage;
               });
               return project;
-          })
+            })
           })
           .catch(error => {
             console.log(error);
