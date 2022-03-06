@@ -33,3 +33,5 @@ pnpm-debug.log*
 docker-compose.override.yml
 Homestead.json
 Homestead.yaml
+/public/js
+/public/css
