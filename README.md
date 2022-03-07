@@ -27,3 +27,5 @@ This is a source code of my website [kjuraszek.pl](https://kjuraszek.pl/).
 ### Serve application
 
 #### `php artisan serve`
+
+Application by default runs on [http://127.0.0.1:8000](http://127.0.0.1:8000).
