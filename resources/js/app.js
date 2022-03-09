@@ -1,5 +1,4 @@
 import Vue from 'vue'
-//require('./bootstrap');
 window.Vue = require('vue').default;
 import VueRouter from 'vue-router'
 import App from './App.vue'
@@ -41,7 +40,7 @@ const router = new VueRouter({
 
 Vue.config.productionTip = false
 
-var app = new Vue({
+new Vue({
   el: '#app',
   router,
   render: h => h(App),
