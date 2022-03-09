@@ -2,12 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import Home from './components/Home.vue'
-
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
-
 import VueSmoothScroll from 'vue2-smooth-scroll'
-
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faArrowLeft, faArrowRight, faPlayCircle, faEnvelope, faSortNumericDown, faSortNumericUp, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faLastfmSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons'
@@ -43,6 +40,7 @@ const router = new VueRouter({
 Vue.config.productionTip = false
 
 new Vue({
+  el: '#app',
   router,
   render: h => h(App),
-}).$mount('#app')
+})

@@ -33,9 +33,9 @@ export default {
   },
   data(){
     return{
-      bannerImage: process.env.BASE_URL + 'img/banner.jpg',
-      defaultImage: process.env.BASE_URL + 'img/default.jpg',
-      avatarImage: process.env.BASE_URL + 'img/chris.jpg',
+      bannerImage: process.env.MIX_BASE_URL + '/img/banner.jpg',
+      defaultImage: process.env.MIX_BASE_URL + '/img/default.jpg',
+      avatarImage: process.env.MIX_BASE_URL + '/img/chris.jpg',
       loading: true,
       failed: false,
       projects: {}
@@ -47,11 +47,11 @@ export default {
   methods: {
       getProjectsData() {
           this.loading = true
-          axios.get(process.env.BASE_URL+"data/projects.json")
+          axios.get(process.env.MIX_BASE_URL+"/data/projects.json")
           .then((response) => {
             this.loading = false;
             this.projects = response.data.map( (project) => {
-              project.image = project.image ? `${process.env.BASE_URL}img/${project.image}` : this.defaultImage;
+              project.image = project.image ? `${process.env.MIX_BASE_URL}/img/${project.image}` : this.defaultImage;
               axios.head(project.image)
               .then((response) => {
                 if(!response.headers['content-type'].toLowerCase().startsWith('image')){
