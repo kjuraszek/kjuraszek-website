@@ -1,5 +1,4 @@
 import Vue from 'vue'
-window.Vue = require('vue').default;
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import Home from './components/Home.vue'
