@@ -36,6 +36,10 @@ export default {
       bannerImage: process.env.MIX_BASE_URL + '/img/banner.jpg',
       defaultImage: process.env.MIX_BASE_URL + '/img/default.jpg',
       avatarImage: process.env.MIX_BASE_URL + '/img/chris.jpg',
+      contactEmail: process.env.MIX_VUE_APP_CONTACT_EMAIL,
+      linkedInUrl: process.env.MIX_VUE_APP_LINKEDIN_URL,
+      lastFmUrl: process.env.MIX_VUE_APP_LASTFM_URL,
+      githubUrl: process.env.MIX_VUE_APP_GITHUB_URL,
       loading: true,
       failed: false,
       projects: {}
