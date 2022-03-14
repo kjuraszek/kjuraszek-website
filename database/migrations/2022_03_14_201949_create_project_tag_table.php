@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('project_tag', function (Blueprint $table) {
             $table->id();
+            $table->integer('project_id')->unsigned();
+            $table->integer('tag_id')->unsigned();
             $table->timestamps();
         });
     }
