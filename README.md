@@ -14,7 +14,10 @@ This is a source code of my website [kjuraszek.pl](https://kjuraszek.pl/).
 
 #### `composer install`
 
-### Copy `.env.example` file and rename it to `.env`
+### Prepare .env file
+
+- copy `.env.example` file and rename it to `.env`
+- update database config (DB_* fields)
 
 ### Generate application key
 
