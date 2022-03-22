@@ -9,7 +9,11 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = json_decode(file_get_contents(public_path() . "/data/projects.json"), true);
+        $projects = array();
+        foreach (Project::all() as $project){
+            $project['tags'] = $project->tags()->get()->pluck('name')->toArray();
+            $projects[] = $project;
+        }
         return $projects;
     }
 }
