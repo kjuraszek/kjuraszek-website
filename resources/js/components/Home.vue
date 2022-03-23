@@ -51,7 +51,7 @@ export default {
   methods: {
       getProjectsData() {
           this.loading = true
-          axios.get(process.env.MIX_BASE_URL+"/data/projects.json")
+          axios.get(process.env.MIX_BASE_URL+"/api/projects")
           .then((response) => {
             this.loading = false;
             this.projects = response.data.map( (project) => {
