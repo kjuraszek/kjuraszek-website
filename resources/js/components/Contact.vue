@@ -5,16 +5,16 @@
       <p class="subtitle has-text-white"><em>the story ends with a moral - contact with me</em></p>
       <div class="columns is-desktop is-centered">
         <div class="column is-narrow">
-          <b-button tag ="a" type="is-light mx-1" icon-pack="fas" icon-left="envelope" :href="`mailto:${contactEmail}`">Stay in touch!</b-button>
+          <b-button tag ="a" type="is-light mx-1" icon-pack="fas" icon-left="envelope" :href="`mailto:${CONTACT_EMAIL}`">Stay in touch!</b-button>
         </div>
         <div class="column is-narrow">
-          <b-button tag ="a" type="is-light mx-1" icon-pack="fab" icon-left="github" :href="githubUrl" target="_blank">Github</b-button>
+          <b-button tag ="a" type="is-light mx-1" icon-pack="fab" icon-left="github" :href="GITHUB_URL" target="_blank">Github</b-button>
         </div>
         <div class="column is-narrow">
-          <b-button tag ="a" type="is-light mx-1" icon-pack="fab" icon-left="lastfm-square" :href="lastFmUrl" target="_blank">What am i listening to?</b-button>
+          <b-button tag ="a" type="is-light mx-1" icon-pack="fab" icon-left="lastfm-square" :href="LASTFM_URL" target="_blank">What am i listening to?</b-button>
         </div>
         <div class="column is-narrow">
-          <b-button tag ="a" type="is-light mx-1" icon-pack="fab" icon-left="linkedin" :href="linkedInUrl" target="_blank">LinkedIn</b-button>
+          <b-button tag ="a" type="is-light mx-1" icon-pack="fab" icon-left="linkedin" :href="LINKEDIN_URL" target="_blank">LinkedIn</b-button>
          </div>
       </div>
     </div>
@@ -22,14 +22,16 @@
 </template>
 
 <script>
+import {CONTACT_EMAIL, LINKEDIN_URL, LASTFM_URL, GITHUB_URL} from '../constants'
+
 export default {
   name: 'Contact',
   data(){
     return{
-      contactEmail: this.$parent.contactEmail,
-      linkedInUrl: this.$parent.linkedInUrl,
-      lastFmUrl: this.$parent.lastFmUrl,
-      githubUrl: this.$parent.githubUrl
+      CONTACT_EMAIL,
+      LINKEDIN_URL,
+      LASTFM_URL,
+      GITHUB_URL,
     }
   },
 }

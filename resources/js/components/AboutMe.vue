@@ -5,7 +5,7 @@
       <p class="subtitle"><em>as in every tale - we have to introduce main character</em></p>
       <div class="box p-1 mb-4">
       <b-image
-            :src="avatarImg"
+            :src="AVATAR_IMAGE"
             alt="Krzysztof Juraszek"
             :rounded="true"
             class=""
@@ -25,11 +25,13 @@
 </template>
 
 <script>
+import {AVATAR_IMAGE} from '../constants'
+
 export default {
   name: 'AboutMe',
   data(){
     return{
-      avatarImg: this.$parent.avatarImage
+      AVATAR_IMAGE
     }
   }
 }
