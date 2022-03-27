@@ -23,7 +23,7 @@
         <template #end>
             <b-navbar-item tag="div">
                 <div class="has-text-center-tablet  has-text-center-mobile">
-                    <b-button type="is-light" tag="a" :href="githubUrl" target="_blank" icon-pack="fab" icon-left="github" >Github</b-button>
+                    <b-button type="is-light" tag="a" :href="GITHUB_URL" target="_blank" icon-pack="fab" icon-left="github" >Github</b-button>
                 </div>
             </b-navbar-item>
         </template>
@@ -32,12 +32,14 @@
 </template>
 
 <script>
+import {GITHUB_URL} from '../constants'
+
 export default {
   name: 'Header',
   data(){
       return{
+          GITHUB_URL,
           smoothScrollOptions: { duration: 500, offset: -50, updateHistory: false },
-          githubUrl: this.$parent.githubUrl
       }
   }
 }

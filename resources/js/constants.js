@@ -1,0 +1,10 @@
+export const CONTACT_EMAIL = process.env.MIX_VUE_APP_CONTACT_EMAIL
+export const LINKEDIN_URL = process.env.MIX_VUE_APP_LINKEDIN_URL
+export const LASTFM_URL = process.env.MIX_VUE_APP_LASTFM_URL
+export const GITHUB_URL = process.env.MIX_VUE_APP_GITHUB_URL
+export const BANNER_IMAGE = `${process.env.MIX_BASE_URL}/${process.env.MIX_VUE_APP_IMAGE_FOLDER}/${process.env.MIX_VUE_APP_BANNER_IMAGE}`
+export const DEFAULT_IMAGE = `${process.env.MIX_BASE_URL}/${process.env.MIX_VUE_APP_IMAGE_FOLDER}/${process.env.MIX_VUE_APP_DEFAULT_IMAGE}`
+export const AVATAR_IMAGE = `${process.env.MIX_BASE_URL}/${process.env.MIX_VUE_APP_IMAGE_FOLDER}/${process.env.MIX_VUE_APP_AVATAR_IMAGE}`
+export const BASE_URL = process.env.MIX_BASE_URL
+export const IMAGE_FOLDER = process.env.MIX_VUE_APP_IMAGE_FOLDER
+export const PROJECTS_ENDPOINT = `${process.env.MIX_BASE_URL}/${process.env.MIX_VUE_APP_PROJECTS_ENDPOINT}`

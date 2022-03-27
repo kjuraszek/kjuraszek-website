@@ -1,6 +1,6 @@
 <template>
   <section class="hero is-info is-mobile  is-large has-background has-background-danger-dark">
-    <img alt="Banner component source code" class="hero-background is-transparent" v-bind:src="bannerImg" />
+    <img alt="Banner component source code" class="hero-background is-transparent" v-bind:src="BANNER_IMAGE" />
     <div class="hero-body">
       <div class="container">
         <h1 class="title is-1">
@@ -15,11 +15,13 @@
 </template>
 
 <script>
+import {BANNER_IMAGE} from '../constants'
+
 export default {
   name: 'Banner',
   data(){
     return{
-      bannerImg: this.$parent.bannerImage
+      BANNER_IMAGE
     }
   }
 }

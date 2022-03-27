@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import {DEFAULT_IMAGE, BASE_URL, IMAGE_FOLDER, PROJECTS_ENDPOINT} from '../constants'
 import Header from './Header.vue'
 import Banner from './Banner.vue'
 import AboutMe from './AboutMe.vue'
@@ -33,16 +34,13 @@ export default {
   },
   data(){
     return{
-      bannerImage: process.env.MIX_BASE_URL + '/img/banner.jpg',
-      defaultImage: process.env.MIX_BASE_URL + '/img/default.jpg',
-      avatarImage: process.env.MIX_BASE_URL + '/img/chris.jpg',
-      contactEmail: process.env.MIX_VUE_APP_CONTACT_EMAIL,
-      linkedInUrl: process.env.MIX_VUE_APP_LINKEDIN_URL,
-      lastFmUrl: process.env.MIX_VUE_APP_LASTFM_URL,
-      githubUrl: process.env.MIX_VUE_APP_GITHUB_URL,
+      DEFAULT_IMAGE,
+      BASE_URL,
+      IMAGE_FOLDER,
+      PROJECTS_ENDPOINT,
       loading: true,
       failed: false,
-      projects: {}
+      projects: {},
     }
   },
   mounted() {
@@ -51,18 +49,18 @@ export default {
   methods: {
       getProjectsData() {
           this.loading = true
-          axios.get(process.env.MIX_BASE_URL+"/api/projects")
+          axios.get(PROJECTS_ENDPOINT)
           .then((response) => {
             this.loading = false;
             this.projects = response.data.map( (project) => {
-              project.image = project.image ? `${process.env.MIX_BASE_URL}/img/${project.image}` : this.defaultImage;
+              project.image = project.image ? `${BASE_URL}/${IMAGE_FOLDER}/${project.image}` : DEFAULT_IMAGE;
               axios.head(project.image)
               .then((response) => {
                 if(!response.headers['content-type'].toLowerCase().startsWith('image')){
                   throw new Error("Invalid response - content is not an image.");
                 }
               }).catch(() => {
-                project.image = this.defaultImage;
+                project.image = DEFAULT_IMAGE;
               });
               return project;
             })
